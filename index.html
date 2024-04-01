@@ -217,10 +217,130 @@
     </div>
   </div>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<style>
+
+.announcement[lwc-51h6s5hpvmh] {
+    color: white;
+}
+
+ .label{
+    background-color: transparent;
+    font-family: var(--lwc-fontFamily,"Arial"),sans-serif;
+    font-size: var(--lwc-esFontSizeMedium,0.8em);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: normal;
+  }  
+  button[embeddedService-chatHeader_chatHeader]{
+	margin : 0em;
+	position : static;
+	padding : 1px 6px;
+}
+
+.embeddedService-chatHeader_chatHeader .button, button {padding:revert; position:revert}/* Sets the header minimise and close buttons to correct position to make them visible */ 
+  
+.embeddedServiceSidebar.layout-float .dockableContainer {
+	z-index: 5000;
+}
+
+.embeddedServiceSidebarMinimizedFabDefaultUI.newMessage {
+	padding: 0 !important;
+}
+
+
+.embedded-service .fab {
+	z-index: 5000;
+}
+
+.embedded-service .channelmenu {
+	z-index: 5000;
+}
+
+button#esw-fab[aria-expanded="true"] {
+    background-color: #000000;
+}
+
+.embedded-service .fab div[class="icon_fab_container"] > img.esw-custom_icon{
+width : 100% !important;
+}
+button#esw-fab{
+height:80px !important;
+width:80px !important;
+background-color: transparent;
+}
+button#esw-fab[aria-expanded="true"]{
+height: 56px !important;
+width: 56px !important;
+bottom: 16px !important;
+}
+
+.embedded-service .fab div[class="icon_fab_container"] {
+width: 68px !important;
+height: 68px !important;
+background-size: 70px 70px !important;
+}
+
+.embedded-service .fab:hover:before, .embedded-service .fab:focus:before {
+
+    background-color: transparent;
+    opacity: 0;
+
+}
+
+.embedded-service .fab {
+
+    box-shadow: 0px 0px 0px 0 rgba(45,45,45,0.5);
+
+}
+  
+.embedded-service #esw-fab.showAnimation {
+    transform: translate3d(0,0,0);
+    -webkit-animation: channelmenu-rotate-in-0-br-cw 0.0s ease-in both,channelmenu-shadow-pulse 0s 0s 0;
+    animation: channelmenu-rotate-in-0-br-cw 0.0s ease-in both,channelmenu-shadow-pulse 0s 0s 0;
+}
+  
+.embedded-service .fab:focus {
+    box-shadow: 0 0 0px 0px transparent; 
+}
+.embedded-service .fab div[class="icon_fab_container"] {
+    background-color: #000000  !important;
+    border-radius: 50%  !important;
+    scale: 0.8  !important;
+    position: fixed  !important;
+    bottom: -6px  !important;
+    right: -6px  !important;
+}
+
+.embedded-service .fab div[class="icon_fab_container"] > img.esw-custom_icon {
+    transform: scale(0.7)  !important;
+}
+
+.embeddedServiceSidebar.sidebarMaximized.layout-float .minimizedContainer {
+	padding: 0  !important;
+}
+
+button#esw-fab{
+    overflow: visible  !important;
+}
+
+
+.embeddedServiceSidebarMinimizedFabDefaultUI .embeddedServiceIcon {
+	z-index: -1  !important;
+}
+
+
+.embeddedServiceSidebarMinimizedFabDefaultUI button.fab {
+    background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id=01569000009MBfH&oid=00D0O000000YvX4&lastMod=1706182441000)  !important;
+    background-size: 24px  !important;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+}
+
+</style>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
+var initESW = function(gslbBaseURL) {
+    // Required if you want labels in a language that’s different from your user’s context.
+    embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
 			'https://psa-customerfirst--hotfix.sandbox.my.salesforce.com',
@@ -229,18 +349,45 @@
 			'00D1x000000KYS3',
 			'NL_Abarth'
 		);
-	};
+};
 
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
-		var s = document.createElement('script');
+var details = navigator.userAgent;
+// Creating a regular expression containing some mobile devices keywords to search it in details string
+var regexp = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i;
+
+// Using test() method to search regexp in details
+var isMobileDevice = regexp.test(details);
+if (isMobileDevice) {
+        console.log('inside mobile');
+		var style = document.createElement('style');
+			style.innerHTML = '.embeddedServiceHelpButton .uiButton{ height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 100px !important;right:20px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id=01569000009M9Be&oid=00D0O000000YvX4&lastMod=1704975659000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(0, 163, 224));background-repeat: no-repeat !important;background-size: 70px 70px !important;}';
+			style.innerHTML += '.embeddedServiceHelpButton .embeddedServiceIcon{ display : none !important}';
+			style.innerHTML += 'span.message{display : none !important}';
+			style.innerHTML += '.embeddedServiceSidebarMinimizedDefaultUI{height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 100px !important;right:20px !importantbackground-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id=01569000009M9Be&oid=00D0O000000YvX4&lastMod=1704975659000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(0, 163, 224));background-repeat: no-repeat !important;background-size: 70px 70px !important;}';
+			style.innerHTML += '.embeddedServiceHelpButton .helpButton .uiButton:hover::before, .embeddedServiceHelpButton .helpButton .uiButton:focus::before{display:none}';
+			document.body.appendChild(style);
+} else {
+        console.log('inside desktop');
+        var style = document.createElement('style');
+			style.innerHTML = '.embeddedServiceHelpButton .uiButton{ height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 90px !important;right:60px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id=01569000009M9Be&oid=00D0O000000YvX4&lastMod=1704975659000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(0, 163, 224));background-repeat: no-repeat !important;background-size: 70px 70px !important;}';
+			style.innerHTML += '.embeddedServiceHelpButton .embeddedServiceIcon{ display : none !important}';
+			style.innerHTML += 'span.message{display : none !important}';
+			style.innerHTML += '.embeddedServiceSidebarMinimizedDefaultUI{height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 90px !important;right:60px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id=01569000009M9Be&oid=00D0O000000YvX4&lastMod=1704975659000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(0, 163, 224));background-repeat: no-repeat !important;background-size: 70px 70px !important;}';
+			style.innerHTML += '.embeddedServiceHelpButton .helpButton .uiButton:hover::before, .embeddedServiceHelpButton .helpButton .uiButton:focus::before{display:none}';
+			style.innerHTML += '.embeddedServiceHelpButton .helpButton {bottom:90px;right: 0px;}';
+			document.body.appendChild(style);
+}
+
+if (!window.embedded_svc || !window.embedded_svc.menu) {
+    var s = document.createElement('script');
 		s.setAttribute('src', 'https://psa-customerfirst--hotfix.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
+    s.onload = function() {
+        initESW(null);
+    };
+    document.body.appendChild(s);
+} else {
+    initESW('https://service.force.com');
+}
 </script>
 
 </body>
