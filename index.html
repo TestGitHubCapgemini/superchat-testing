@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title> Superchat AC NL Prod </title>
+  <title> Superchat AP FR DevMR </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     /* Estilos personalizados */
@@ -50,7 +50,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Superchat AC NL Prod</a>
+    <a class="navbar-brand" href="#">Superchat AP FR DevMR</a>
   </nav>
   
   <div class="container">
@@ -333,20 +333,20 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://psa-customerfirst.my.salesforce.com',
-			'https://d.la1-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
+			'https://psa-customerfirst--devmr.sandbox.my.salesforce.com',
+			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00D0O000000YvX4',
-			'Bot_NL_AC'
+			'00Dbd000000PaWX',
+			'Bot_FR_AP'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst.my.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://psa-customerfirst--devmr.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
