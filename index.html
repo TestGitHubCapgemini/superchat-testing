@@ -227,10 +227,9 @@
               false
           );
       </script>
-	<link rel="stylesheet" href="https://raw.githack.com/TestGitHubCapgemini/frg-it-fiat/main/slds.min.css">
 <!-- Embedded Service ChatBot Styles -->
       <style type='text/css'>
-
+		@import url('https://psa-customerfirst--c.vf.force.com/resource/1670933538000/SnY_slds_mod_min_css/slds.min.css');
 
         .embeddedServiceHelpButton .helpButton .uiButton {
           background-color: transparent !important;
@@ -333,14 +332,14 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
 			'https://psa-customerfirst--preprod.sandbox.my.salesforce.com',
 			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
 			gslbBaseURL,
 			'00D1x000000KYSu',
-			'Bot_FR_AP'
+			'Bot_NL_AR'
 		);
 	};
 
