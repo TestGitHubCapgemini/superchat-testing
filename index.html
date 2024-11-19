@@ -228,10 +228,10 @@
           );
       </script>
 <!-- Embedded Service ChatBot Styles -->
-	<!--<link rel="stylesheet" href="https://raw.githack.com/TestGitHubCapgemini/frg-it-fiat/main/slds.min.css">-->
+	<link rel="stylesheet" href="https://raw.githack.com/TestGitHubCapgemini/frg-it-fiat/main/slds.min.css"/>
       <style type='text/css'>
 		/*@import url('https://psa-customerfirst--c.vf.force.com/resource/1670933538000/SnY_slds_mod_min_css/slds.min.css');*/
-		@import url('https://psa-customerfirst--vision.sandbox.file.force.com/sfc/dist/version/download/?oid=00D3N000000HL93&ids=068bd000001FcHJ&d=%2Fa%2Fbd000000KJL3%2Fe2YNvMt3LU6Nb1Kcg43SwtbF2Ct_QoNMdp2YgE9YqVA&asPdf=false');
+
         .embeddedServiceHelpButton .helpButton .uiButton {
           background-color: transparent !important;
           font-family: "Arial", sans-serif;
@@ -333,20 +333,20 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://psa-customerfirst--devmr.sandbox.my.salesforce.com',
+			'https://psa-customerfirst--preprod.sandbox.my.salesforce.com',
 			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00Dbd000000PaWX',
-			'Bot_ES_AP'
+			'00D1x000000KYSu',
+			'Bot_NL_AR'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst--devmr.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://psa-customerfirst--preprod.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
