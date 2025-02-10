@@ -216,149 +216,25 @@
       </div>
     </div>
   </div>
- <!-- Embedded Service <-> LWC Wrapper -->
-      <script>
-          window.addEventListener("message", function(event) {
-              var payload = event.data;
-              if (payload && payload.type === "chasitor.sendMessage") {
-                  embedded_svc.postMessage("chasitor.sendMessage", payload.message);
-              }
-          },
-              false
-          );
-      </script>
-
-<!-- Embedded Service ChatBot Styles -->
-      <style type='text/css'>
-        @import url('https://psa-customerfirst--c.visualforce.com/resource/1671057967000/SnY_slds_mod_min_css/slds.min.css');
-        .embeddedServiceHelpButton .helpButton .uiButton {
-          background-color: #005290;
-          font-family: "Arial", sans-serif;
-        }
-
-        .embeddedServiceHelpButton .helpButton .uiButton {
-          /* background-color: transparent !important;  */
-          font-family: "Salesforce Sans", sans-serif !important;
-        }
-
-        .embeddedServiceHelpButton .helpButton .uiButton:focus {
-         /* outline: 1px solid #5820D5 !important; */
-        }
-	      
-	      
-         @media only screen and (min-width: 48em) {
-	   .embeddedServiceHelpButton .helpButton .uiButton:hover::before,
-		 .embeddedServiceHelpButton .helpButton .uiButton:focus::before
-		 {
-		border-radius: 50% !important; 
-	     }
-	 }
-  
-
-        @font-face {
-          font-family: 'Salesforce Sans' !important;
-          src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-            url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype') !important;
-        }
-
-        span.message{
-          display:none;
-        }
-
-       button.sidebarHeader.minimizedContainer.embeddedServiceSidebarMinimizedDefaultUI {
-			 background-image: url('https://www.opel.lu/content/dam/omnichannel-aem/cross/livechat/headset_icon_chatbot_opel.png') !important;
-			 background-position: center;
-			 background-size: 70px;
-			 background-repeat: no-repeat !important;
-            background-color: transparent !important;
-			 height: 70px !important;
-			 width: 70px !important;
-			 border-radius: 50% !important;
-			 min-height: 60px !important;
-			 min-width: 60px !important;
-			 margin: 30px;
-			 border-style: none;
-			 box-shadow: none !important;
-			 }
-
-        .embeddedServiceHelpButton .helpButton .uiButton{
-			background-image: url('https://www.opel.lu/content/dam/omnichannel-aem/cross/livechat/headset_icon_chatbot_opel.png') !important;
-			background-position: center;
-			background-color: transparent !important;
-			background-size: 50px;
-			background-repeat: no-repeat !important;
-			width: 40px !important;
-			height: 40px !important;
-			border-radius: 50% !important;
-			min-height: 60px !important;
-			min-width: 60px !important;
-			box-shadow: none !important;
-
-        }
-		.embeddedServiceLiveAgentStateChatItem.chatMessage{
-			min-height: auto;
-		}
-        @keyframes pulse-blue {
-          0%   {transform: scale(0.95);box-shadow: 0 0 0 0 var(--lwc-colorBackgroundButtonBrand,rgb(0, 163, 224));}
-          70%  {transform: scale(1.0);box-shadow: 0 0 0 20px rgb(0 126 219 / 0%);}
-          100% {transform: scale(0.95);box-shadow: 0 0 0 0 rgb(0 126 219 / 0%);}
-        }
-
-        .embeddedServiceHelpButton .embeddedServiceIcon{
-          visibility : hidden;
-        }
-
-        .embeddedServiceHelpButton .helpButton{
-         /* height : 90px; */
-	    margin-right: 20px;
-	    margin-bottom: 60px;
-        }
-
-        h2[embeddedService-chatHeader_chatHeader] {
-          font-size : 13px !important;
-        }
-      </style>
-
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'fr'; // For example, enter 'en' or 'en-US'
 
-		embedded_svc.menu.init(
-			'https://psa-customerfirst--vision.sandbox.my.salesforce.com',
-			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
-			gslbBaseURL,
-			'00Dbd000001Mfrx',
-			'Chat_Store_lu_OP'
-		);
+			embeddedservice_bootstrap.init(
+				'00D7Z00000054Zp',
+				'TestMIAWeb',
+				'https://psa-customerfirst--dev03.sandbox.my.site.com/ESWTestMIAWeb1738687384453',
+				{
+					scrt2URL: 'https://psa-customerfirst--dev03.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
 	};
-	var details = navigator.userAgent;
-	// Creating a regular expression containing some mobile devices keywords to search it in details string
-	var regexp = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i;
-
-	// Using test() method to search regexp in details
-	var isMobileDevice = regexp.test(details);
-	if (isMobileDevice) {} else {
-		console.log('inside desktop');
-		var style = document.createElement('style');
-		style.innerHTML = 
-		'.embeddedServiceHelpButton .uiButton { height: 80px !important; min-width: 80px !important; width: 80px;}';
-		style.innerHTML += 'li#esw-cta_3mi7Y0000000014{pointer-events : none;opacity :0.4;}';
-		style.innerHTML += '.embedded-service .channelmenu_ctas > li:last-child{pointer-events : none;}';
-		document.body.appendChild(style);
-	}
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst--vision.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
 </script>
+<script type='text/javascript' src='https://psa-customerfirst--dev03.sandbox.my.site.com/ESWTestMIAWeb1738687384453/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
