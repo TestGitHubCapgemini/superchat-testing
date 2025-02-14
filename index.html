@@ -217,24 +217,35 @@
       </div>
     </div>
   </div>
+	 <script>
+          window.addEventListener("message", function(event) {
+              var payload = event.data;
+              if (payload && payload.type === "chasitor.sendMessage") {
+                  embedded_svc.postMessage("chasitor.sendMessage", payload.message);
+              }
+          },
+              false
+          );
+      </script>
+	<link rel="stylesheet" href="https://raw.githack.com/TestGitHubCapgemini/frg-it-fiat/main/slds.min.css">
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://psa-customerfirst--dev03.sandbox.my.salesforce.com',
+			'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com',
 			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00D7Z00000054Zp',
-			'Bot_AP_IT_Final'
+			'00Dbd000001VOlR',
+			'Bot_NL_AC'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst--dev03.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
