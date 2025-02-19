@@ -217,43 +217,122 @@
       </div>
     </div>
   </div>
-	 <script>
-          window.addEventListener("message", function(event) {
-              var payload = event.data;
-              if (payload && payload.type === "chasitor.sendMessage") {
-                  embedded_svc.postMessage("chasitor.sendMessage", payload.message);
-              }
-          },
-              false
-          );
-      </script>
-	<link rel="stylesheet" href="https://raw.githack.com/TestGitHubCapgemini/frg-it-fiat/main/slds.min.css">
-<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = 'nl_NL'; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.menu.init(
-			'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com',
-			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
-			gslbBaseURL,
-			'00Dbd000001VOlR',
-			'Bot_NL_AC'
-		);
-	};
-
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
+<style type="text/css">
+		.embeddedServiceHelpButton .helpButton .uiButton {
+	background-color: #ad0040;
+	font-family: "Salesforce Sans", sans-serif;
 	}
-</script>
+  .embeddedService-chatHeader_chatHeader .button, button {padding:revert; position:revert}/* Sets the header minimise and close buttons to correct position to make them visible */ 
+  .embedded-service .fab:hover:before, .embedded-service .fab:focus:before {
+content : none !important
+}
+button.minimizeButton, button.closeButton, button#esw-fab{
+    padding-top: 0px !important;
+    padding-right: 0px!important;
+    padding-bottom: 0px!important;
+    padding-left: 0px!important;
+    padding: 0 !important;
+}
+.embeddedServiceHelpButton .uiButton{
+	right: -5px !important;
+	bottom: 100px !important;
+	top : -120Px !important;
+}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+	outline: 1px solid #ad0040;
+	}
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+	url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+	}
+	.embeddedServiceSidebar.modalContainer {
+	z-index: 5000000;
+	}
+	.helpButtonDisabled{
+        display: none !important;
+	}
+	.embeddedServiceHelpButton .helpButton{
+	right : 75px;
+	}
+	.embeddedServiceSidebar.layout-docked .dockableContainer {
+	right : 75px;
+	}
+	  h2[embeddedService-chatHeader_chatHeader] {
+        color : White;
+  	 }
+    	button[embeddedService-chatHeader_chatHeader]{
+        margin : 0em;
+        position : static;
+        padding : 1px 6px;
+    }
+	div.dockableContainer.showDockableContainer .embeddedServiceLiveAgentStateChatAvatar.isLightningOutContext .agentIconColor0 {
+		background-color: rgba(173,0,64,0.9) !important;
+	}
+	div.dockableContainer.showDockableContainer .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI.chasitor.plaintextContent {
+		background: rgba(173,0,64,0.9) !important;
+	}
+	div.dockableContainer.showDockableContainer .embeddedServiceLiveAgentStateChatAvatar.isLightningOutContext .avatar.iconAvatar.agentIconColor0 {
+		background-color: rgba(173,0,64,0.9) !important;
+	}
+	.cPreChat .buttonclassDS {
+		background: rgba(173,0,64,0.9) !important;
+		border-color: rgba(173,0,64,0.9) !important;
+	}
+	.waitingCancelChat.uiButton--inverse.uiButton.embeddedServiceSidebarButton span.label.bBody{
+	  color: rgba(173,0,64,0.9);
+	}
+	.endChatButton.closeChatButton.uiButton--default.uiButton.embeddedServiceSidebarButton{
+		background-color: rgba(173,0,64,0.9) !important;
+	}
+	.endChatButton.saveTranscriptButton.uiButton--inverse.uiButton.embeddedServiceSidebarButton span.label.bBody{
+		color: rgba(173,0,64,0.9);
+	}
+	.dialogButton.dialog-button-0.uiButton.embeddedServiceSidebarButton{
+		background-color: rgba(173,0,64,0.9)
+	}
+	.dialogButton.dialog-button-1.uiButton.embeddedServiceSidebarButton span.label.bBody{
+		color: rgba(173,0,64,0.9);
+	}
+  h5.cPreChat {
+    margin-top: 20px;
+    margin-bottom: 20px;
+	color:black;
+	font-size:12px;
+}
+.prechatUI .prechatContent .slds-form-element__control.slds-p-around_medium .uiInput.uiInputText.uiInput--default.uiInput--input{
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+.prechatContent div .uiInput--input .input, .uiInput--input.input{
+	width : 280px;
+	line-height:35px;
+	color:black;
+}
+.prechatUI div h5{
+	color:black;
+	font-size:12px;
+	margin-top:10px;
+}
+.prechatContent div label.uiLabel-left.form-element__label.uiLabel{
+	color:var(--lwc-colorTextLabel,#696969);
+}
+.cPreChat .slds-button_brand{
+	width: auto !important;
+}
+.cPreChat>* {
+	margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+</style>
+<script type="text/javascript" src="https://service.force.com/embeddedservice/5.0/esw.min.js"></script>
+<script type="text/javascript">var details=navigator.userAgent,regexp=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,isMobileDevice=regexp.test(details);
+if(!isMobileDevice){var initESW=function(a){embedded_svc.settings.displayHelpButton=!0;embedded_svc.settings.language="es";embedded_svc.settings.defaultMinimizedText="Chat";embedded_svc.settings.loadingText="Cargando";embedded_svc.settings.storageDomain="dsautomobiles.es";embedded_svc.settings.directToButtonRouting=function(b){return b[5].value};embedded_svc.settings.enabledFeatures=["LiveAgent"];embedded_svc.settings.entryFeature="LiveAgent";embedded_svc.init("https://psa-customerfirst.my.salesforce.com",
+"https://dsautomobiles.my-customerportal.com/dsautomobiles",a,"00D0O000000YvX4","ES_Chat_DS",{baseLiveAgentContentURL:"https://c.la3-c1-fra.salesforceliveagent.com/content",deploymentId:"5721r0000004Fqg",buttonId:"5731r000000btlh",baseLiveAgentURL:"https://d.la3-c1-fra.salesforceliveagent.com/chat",eswLiveAgentDevName:"EmbeddedServiceLiveAgent_Parent04I1r000000KzP2EAK_17332fd0217",isOfflineSupportEnabled:!1})};console.log("inside desktop");var style=document.createElement("style");style.innerHTML=
+".embeddedServiceHelpButton .uiButton{ height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
+style.innerHTML+=".embeddedServiceHelpButton .embeddedServiceIcon{ display : none !important}";style.innerHTML+="span.message{display : none !important}";style.innerHTML+=".embeddedServiceSidebarMinimizedDefaultUI{height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
+style.innerHTML+=".embeddedServiceHelpButton .helpButton .uiButton:hover::before, .embeddedServiceHelpButton .helpButton .uiButton:focus::before{display:none}";document.body.appendChild(style);if(window.embedded_svc)initESW("https://service.force.com");else{var s=document.createElement("script");s.setAttribute("src","https://psa-customerfirst.my.salesforce.com/embeddedservice/5.0/esw.min.js");s.onload=function(){initESW(null)};document.body.appendChild(s)}};</script>
+ 
 
 </body>
 </html>
