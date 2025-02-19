@@ -325,14 +325,67 @@ button.minimizeButton, button.closeButton, button#esw-fab{
     margin-right: 1rem !important;
 }
 </style>
-<script type="text/javascript" src="https://service.force.com/embeddedservice/5.0/esw.min.js"></script>
-<script type="text/javascript">var details=navigator.userAgent,regexp=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,isMobileDevice=regexp.test(details);
-if(!isMobileDevice){var initESW=function(a){embedded_svc.settings.displayHelpButton=!0;embedded_svc.settings.language="es";embedded_svc.settings.defaultMinimizedText="Chat";embedded_svc.settings.loadingText="Cargando";embedded_svc.settings.storageDomain="dsautomobiles.es";embedded_svc.settings.directToButtonRouting=function(b){return b[5].value};embedded_svc.settings.enabledFeatures=["LiveAgent"];embedded_svc.settings.entryFeature="LiveAgent";embedded_svc.init("https://psa-customerfirst.my.salesforce.com",
-"https://dsautomobiles.my-customerportal.com/dsautomobiles",a,"00D0O000000YvX4","ES_Chat_DS",{baseLiveAgentContentURL:"https://c.la3-c1-fra.salesforceliveagent.com/content",deploymentId:"5721r0000004Fqg",buttonId:"5731r000000btlh",baseLiveAgentURL:"https://d.la3-c1-fra.salesforceliveagent.com/chat",eswLiveAgentDevName:"EmbeddedServiceLiveAgent_Parent04I1r000000KzP2EAK_17332fd0217",isOfflineSupportEnabled:!1})};console.log("inside desktop");var style=document.createElement("style");style.innerHTML=
-".embeddedServiceHelpButton .uiButton{ height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
-style.innerHTML+=".embeddedServiceHelpButton .embeddedServiceIcon{ display : none !important}";style.innerHTML+="span.message{display : none !important}";style.innerHTML+=".embeddedServiceSidebarMinimizedDefaultUI{height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
-style.innerHTML+=".embeddedServiceHelpButton .helpButton .uiButton:hover::before, .embeddedServiceHelpButton .helpButton .uiButton:focus::before{display:none}";document.body.appendChild(style);if(window.embedded_svc)initESW("https://service.force.com");else{var s=document.createElement("script");s.setAttribute("src","https://psa-customerfirst.my.salesforce.com/embeddedservice/5.0/esw.min.js");s.onload=function(){initESW(null)};document.body.appendChild(s)}};</script>
- 
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://psa-customerfirst.my.salesforce.com',
+			'https://dsautomobiles.my-customerportal.com/dsautomobiles',
+			gslbBaseURL,
+			'00D0O000000YvX4',
+			'ES_Chat_DS',
+			{
+				baseLiveAgentContentURL: 'https://c.la11-core1.sfdc-urlt2q.salesforceliveagent.com/content',
+				deploymentId: '5721r0000004Fqg',
+				buttonId: '5731r000000btlh',
+				baseLiveAgentURL: 'https://d.la11-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1r000000KzP2EAK_17332fd0217',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://psa-customerfirst.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </body>
 </html>
