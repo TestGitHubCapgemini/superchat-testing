@@ -370,15 +370,7 @@ if (!isMobileDevice) {
 			}
 		);
 	};
-    console.log("inside desktop");
-    var style = document.createElement("style");
-    style.innerHTML =
-        ".embeddedServiceHelpButton .uiButton{ height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
-    style.innerHTML += ".embeddedServiceHelpButton .embeddedServiceIcon{ display : none !important}";
-    style.innerHTML += "span.message{display : none !important}";
-    style.innerHTML += ".embeddedServiceSidebarMinimizedDefaultUI{height: 80px !important;min-width: 80px !important;width:80px;border-radius: 50% !important;bottom: 40px !important;right:90px !important;background-image: url(https://psa-customerfirst.file.force.com/servlet/servlet.ImageServer?id\x3d01569000009MAIH\x26oid\x3d00D0O000000YvX4\x26lastMod\x3d1705568547000) !important;border: 5px solid var(--lwc-colorBackgroundButtonBrand,rgb(152, 138, 125));background-repeat: no-repeat !important;background-size: 70px 70px !important;}";
-    style.innerHTML += ".embeddedServiceHelpButton .helpButton .uiButton:hover::before, .embeddedServiceHelpButton .helpButton .uiButton:focus::before{display:none}";
-    document.body.appendChild(style);
+
 if (!window.embedded_svc) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://psa-customerfirst.my.salesforce.com/embeddedservice/5.0/esw.min.js');
