@@ -325,22 +325,13 @@ button.minimizeButton, button.closeButton, button#esw-fab{
     margin-right: 1rem !important;
 }
 </style>
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
-var details = navigator.userAgent,
-    regexp = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,
-    isMobileDevice = regexp.test(details);
+	<script type = "text/javascript" src = "https://service.force.com/embeddedservice/5.0/esw.min.js" ></script> 
+	<script type = "text/javascript">
+    var details = navigator.userAgent,
+        regexp = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,
+        isMobileDevice = regexp.test(details);
 if (!isMobileDevice) {
+
     var initESW = function(a) {
         embedded_svc.settings.displayHelpButton = !0;
         embedded_svc.settings.language = "es";
@@ -352,14 +343,18 @@ if (!isMobileDevice) {
         };
         embedded_svc.settings.enabledFeatures = ["LiveAgent"];
         embedded_svc.settings.entryFeature = "LiveAgent";
-        embedded_svc.init("https://psa-customerfirst.my.salesforce.com",
-            "https://dsautomobiles.my-customerportal.com/dsautomobiles", a, "00D0O000000YvX4", "ES_Chat_DS", {
-                baseLiveAgentContentURL: "https://c.la11-core1.sfdc-urlt2q.salesforceliveagent.com/content",
-                deploymentId: "5721r0000004Fqg",
-                buttonId: "5731r000000btlh",
-                baseLiveAgentURL: "https://d.la11-core1.sfdc-urlt2q.salesforceliveagent.com/chat",
-                eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04I1r000000KzP2EAK_17332fd0217",
-                isOfflineSupportEnabled: !1
+        embedded_svc.init(			
+			'https://psa-customerfirst.my.salesforce.com',
+			'https://dsautomobiles.my-customerportal.com/dsautomobiles',
+			gslbBaseURL,
+			'00D0O000000YvX4',
+			'ES_Chat_DS', {
+				baseLiveAgentContentURL: 'https://c.la11-core1.sfdc-urlt2q.salesforceliveagent.com/content',
+				deploymentId: '5721r0000004Fqg',
+				buttonId: '5731r000000btlh',
+				baseLiveAgentURL: 'https://d.la11-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1r000000KzP2EAK_17332fd0217',
+				isOfflineSupportEnabled: false
             })
     };
     console.log("inside desktop");
@@ -380,8 +375,7 @@ if (!isMobileDevice) {
         };
         document.body.appendChild(s)
     }
-};
-
+}; 
 </script>
 </body>
 </html>
