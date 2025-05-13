@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>PT_Chat_Citroen_PCDO</title>
+  <title>PT_Chat_Citroen</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <style>
@@ -51,7 +51,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">PT_Chat_Citroen_PCDO</a>
+    <a class="navbar-brand" href="#">PT_Chat_Citroen</a>
   </nav>
   
   <div class="container">
@@ -243,24 +243,50 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.menu.init(
-			'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com',
-			'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://psa-customerfirst--kang.sandbox.my.salesforce.com',
+			'https://psa-customerfirst--kang.sandbox.my.site.com/citroen',
 			gslbBaseURL,
-			'00Dbd000001VOlR',
-			'PT_Citroen_PCDO'
+			'00DAP000009DWo5',
+			'PT_Chat_Citroen',
+			{
+				baseLiveAgentContentURL: 'https://c.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/content',
+				deploymentId: '5721r0000004Fqg',
+				buttonId: '5731r0000004GV9',
+				baseLiveAgentURL: 'https://d.la12s-core1.sfdc-urlt2q.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1r000000CaYcEAK_16ad470f50d',
+				isOfflineSupportEnabled: false
+			}
 		);
 	};
 
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
+	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://psa-customerfirst--devmr313.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://psa-customerfirst--kang.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
